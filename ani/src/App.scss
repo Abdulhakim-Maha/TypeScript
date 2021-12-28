@@ -1,0 +1,48 @@
+.App {
+  opacity: 0;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .bg_video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .container {
+    width: 380px;
+    height: 200px;
+    margin-left: 2rem;
+    margin-top: 300px;
+    position: absolute;
+  }
+
+  .text {
+    // margin: 1rem;
+    margin-top: 4rem;
+
+    // background-color: #333;
+    text-shadow: 0px 0px 3px rgba($color: #333, $alpha: 0.83);
+    //
+    // margin-left: 4rem;
+    // padding: 2rem;
+    font-weight: 300;
+    font-size: 36px;
+    opacity: 0;
+  }
+  .wrap {
+    margin-left: 5rem;
+    // background-color: #333;
+    .stagger {
+      font-size: 24px;
+      opacity: 0;
+      // color:
+      // margin-left: 4rem;
+    }
+  }
+}
