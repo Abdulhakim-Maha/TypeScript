@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
+import Title from "./components/Title/TItle";
 import "./App.scss";
 import { gsap } from "gsap";
+import Article from "./components/Article/Article";
 
 function App() {
   const text = useRef<HTMLHeadingElement>(null);
@@ -18,36 +20,26 @@ function App() {
         ease: "power3.out",
       })
       .to(".stagger", { stagger: 0.1, opacity: 1 });
-  }, []);
+  }, [tl]);
 
   return (
     <div className="App" ref={app}>
-      <video className="bg_video" src="/bg.mp4" loop muted autoPlay></video>
-      <div className="container">
-        <h1 ref={text} className="text">
-          Hello Everyone
-        </h1>
-        {/* <h2 className="head2"> My name</h2> */}
-        <div className="wrap">
-          <span className="stagger">M</span>
-          <span className="stagger">y</span>
-          <span className="stagger"> </span>
-          <span className="stagger">n</span>
-          <span className="stagger">a</span>
-          <span className="stagger">m</span>
-          <span className="stagger">e</span>
-          <span className="stagger"> </span>
-          <span className="stagger">a</span>
-          <span className="stagger">u</span>
-          <span className="stagger">s</span>
-          <span className="stagger">t</span>
-          <span className="stagger">i</span>
-          <span className="stagger">n</span>
-          <span className="stagger">i</span>
-          <span className="stagger">q</span>
-          <span className="stagger">e</span>
-          <span className="stagger">r</span>
+      <div className="top">
+        <video className="bg_video" src="/bg.mp4" loop muted autoPlay></video>
+        <div className="container">
+          <h1 ref={text} className="text">
+            Hello Everyone
+          </h1>
+          <div className="wrap">
+            <Title />
+          </div>
         </div>
+      </div>
+      <div className="center">
+        <Article img_src="/impression.jpg" reverse={false} />
+      </div>
+      <div className="bottom">
+        <h4>Footage</h4>
       </div>
     </div>
   );

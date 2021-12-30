@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:5rem;
+
+  aside{
+    .Title{
+      opacity: 0;
+    }
+  }
+  .img_wrapper {
+    .img {
+      opacity: 0;
+      border-radius: 3px;
+      width: 690px;
+      height: 480px;
+      margin-right: 2rem;
+    }
+  }
+}
