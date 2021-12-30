@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import classes from "./Article.module.scss";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import {gsap} from 'gsap'
+import {ScrollTrigger} from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
 type P = {
   img_src: string;
@@ -11,28 +10,27 @@ type P = {
 };
 
 const Article: React.FC<P> = (props) => {
-  const img_ref = useRef<HTMLImageElement>(null);
-  const imgClass = `.${classes.img}`.trim()
-  const ttl = useRef(null);
-  const tl = gsap.timeline();
+  const img_ref = useRef<HTMLImageElement>(null)
+  const tl = gsap.timeline()
 
-  console.log(imgClass)
-  useEffect(() => {
-    tl.to(img_ref.current, {
-      opacity: 1,
-      //   x:100
-        scrollTrigger: { trigger:'.Article_img__3SG0F'},
+  useEffect(()=>{
+    tl.from(img_ref.current,{
+      opacity:0,
+      y:100,
+      scrollTrigger:{
+        trigger:img_ref.current,
+        start:'top bottom',
+        end:'top center',
+        scrub:1,
+        markers:true,
+      }
     })
-      .to(ttl.current, { opacity: 1, duration: 1 })
-      .from(ttl.current, { y: 50 }, "<");
-  }, []);
+  },[])
 
   const PARAGRAPH = () => {
     return (
       <aside>
-        <h2 className={classes.Title} ref={ttl}>
-          This is my first impression
-        </h2>
+        <h2 className={classes.Title}>This is my first impression</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque,
           iusto delectus at veritatis reprehenderit ipsa, vero obcaecati
@@ -45,7 +43,7 @@ const Article: React.FC<P> = (props) => {
   const IMAGE = () => {
     return (
       <div className={classes.img_wrapper}>
-        <img ref={img_ref} src={props.img_src} className={classes.img} alt="image" />
+        <img src={props.img_src} className={classes.img} ref={img_ref} alt="For Info" />
       </div>
     );
   };
