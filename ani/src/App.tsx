@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 function App() {
   const text = useRef<HTMLHeadingElement>(null);
   const app = useRef<HTMLDivElement>(null);
-  const top = useRef(null)
+  const top = useRef(null);
   const tl = gsap.timeline();
 
   useEffect(() => {
@@ -22,21 +22,14 @@ function App() {
         x: 80,
         delay: 0.5,
         ease: "power3.out",
-        scrollTrigger:{
-          trigger:text.current,
-          start: 'top center',
-          end:'top 40%',
-          scrub:1,
-          // markers:true
-        }
       })
-      .to(".staggr", { stagger: 0.1, opacity: 1 });
+      .to(".stagger", { stagger: 0.1, opacity: 1, scrollTrigger: ".stagger" });
   }, [tl]);
 
   return (
     <div className="App" ref={app}>
       <div className="top" ref={top}>
-        <video className="bg_video" src="/bg.mp4" loop muted autoPlay></video>
+        <video className="bg_video" src="/bg.mp4" muted autoPlay></video>
         <div className="container">
           <h1 ref={text} className="text">
             Hello Everyone
@@ -48,9 +41,10 @@ function App() {
       </div>
       <div className="center">
         <Article img_src="/impression.jpg" reverse={false} />
+        <Article img_src="/profile.jpg" reverse={true} />
       </div>
       <div className="bottom">
-        <Footage/>
+        <Footage />
       </div>
     </div>
   );
