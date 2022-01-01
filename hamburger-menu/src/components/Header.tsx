@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Hamburger from "./Hamburger";
 
@@ -58,7 +58,9 @@ const Header = () => {
         <div className="wrapper">
           <div className="inner-header">
             <div className="logo">
-              <Link to="/" onClick={pathChangeHandler}>HAMBRG.</Link>
+              <Link to="/" onClick={pathChangeHandler}>
+                HAMBRG.
+              </Link>
             </div>
             <div className="menu">
               <button disabled={disabled} onClick={handleMenu}>
