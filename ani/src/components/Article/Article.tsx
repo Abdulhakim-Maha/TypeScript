@@ -8,10 +8,6 @@ type P = {
   img_src: string;
   reverse: boolean;
 };
-type M_L = {
-  m_l?: boolean;
-  img_src?:string,
-};
 
 const Article: React.FC<P> = (props) => {
   const img_ref = useRef<HTMLImageElement>(null);
@@ -54,7 +50,7 @@ const Article: React.FC<P> = (props) => {
       });
   }, []);
 
-  const PARAGRAPH:React.FC<M_L> = () => {
+  const PARAGRAPH = () => {
     return (
       <aside>
         <h2 ref={Title_ref} className={classes.Title}>
@@ -69,7 +65,7 @@ const Article: React.FC<P> = (props) => {
       </aside>
     );
   };
-  const IMAGE:React.FC<M_L> = (props) => {
+  const IMAGE = () => {
     return (
       <div className={classes.img_wrapper}>
         <img
@@ -85,8 +81,8 @@ const Article: React.FC<P> = (props) => {
 
   return (
     <div className={classes.container}>
-      {!props.reverse ? <IMAGE img_src={props.img_src}/> : <PARAGRAPH m_l={true} />}
-      {!props.reverse ? <PARAGRAPH /> : <IMAGE m_l={true} img_src={props.img_src} />}
+      {!props.reverse ? <IMAGE /> : <PARAGRAPH />}
+      {!props.reverse ? <PARAGRAPH /> : <IMAGE />}
     </div>
   );
 };

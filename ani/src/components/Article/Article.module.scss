@@ -6,20 +6,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:5rem;
+  padding: 5rem;
   position: relative;
   height: 100%;
   width: 100%;
 
-  aside{
+  aside {
     // background-color: #333;
+    @include marginLeft();
     height: 200px;
-    .Title{
+    .Title {
       opacity: 1;
       margin-bottom: 1rem;
       font-size: 32px;
     }
-    p{
+    p {
       opacity: 1;
     }
   }
@@ -30,7 +31,7 @@
       border-radius: 3px;
       width: 690px;
       height: 480px;
-      // margin-right: 2rem;
+      @include marginLeft();
     }
   }
 }
