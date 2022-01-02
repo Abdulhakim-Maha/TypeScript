@@ -171,10 +171,10 @@ const Hamburger: React.FC<{ state: M; handler: () => void }> = ({
                       onMouseEnter={(e) => handleHover(e)}
                       onMouseOut={(e) => handleHoverExit(e)}
                       ref={line1}
-                      to="/opportunities"
+                      to="/our-products"
                       onClick={handler}
                     >
-                      Opportunities
+                      Our Products
                     </Link>
                   </li>
                 </ul>
@@ -184,10 +184,10 @@ const Hamburger: React.FC<{ state: M; handler: () => void }> = ({
                       ref={line2}
                       onMouseEnter={(e) => handleHover(e)}
                       onMouseOut={(e) => handleHoverExit(e)}
-                      to="/solutions"
+                      to="/fashion-style"
                       onClick={handler}
                     >
-                      Solutions
+                      Fashion Style
                     </Link>
                   </li>
                 </ul>
@@ -200,7 +200,7 @@ const Hamburger: React.FC<{ state: M; handler: () => void }> = ({
                       to="/contact-us"
                       onClick={handler}
                     >
-                      Contack us
+                      Contact us
                     </Link>
                   </li>
                 </ul>

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
+import OurProducts from "./pages/our-products/OurProducts";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
           <div className="home">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/opportunities" element={<Opportunities />} />
-              <Route path="/solutions" element={<Solutions />} />
+              <Route path="/our-products" element={<OurProducts />} />
+              <Route path="/fashion-style" element={<FashionStyle />} />
               <Route path="/contact-us" element={<Contact />} />
             </Routes>
           </div>
@@ -24,11 +25,11 @@ function App() {
   );
 }
 
-function Opportunities() {
-  return <p>Discover our numerous opportunities</p>;
-}
+// function OurProducts() {
+//   return <p>Discover our numerous opportunities</p>;
+// }
 
-function Solutions() {
+function FashionStyle() {
   return <p>Solutions that help you.</p>;
 }
 

@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,600,800&display=swap");
+@import "global.scss";
 
 $red: #e20001;
 $black: #191919;
+$white: #fff;
 
 html,
 body {
@@ -11,6 +13,18 @@ body {
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
+
+//config scroll bar
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(179, 179, 179);
+}
+
 .App {
   // padding: 0;
   // margin: 0;
@@ -43,17 +57,19 @@ body {
         height: 100%;
         width: 100%;
         // overflow-y: hidden;
-        p {
-          font-size: 0.75rem;
-          letter-spacing: 0.3rem;
-          font-weight: 500;
-        }
-        h5 {
-          margin-top: 260px;
-          font-size: 1.5rem;
-          font-weight: 600;
-          padding-right: 360px;
-        }
+        // p {
+        //   font-size: 0.75rem;
+        //   letter-spacing: 0.3rem;
+        //   font-weight: 500;
+        //   // color:$white;
+        // }
+        // h5 {
+        //   margin-top: 80px;
+        //   font-size: 1.5rem;
+        //   // color:inherit;
+        //   font-weight: 600;
+        //   padding-right: 360px;
+        // }
       }
     }
   }
@@ -71,7 +87,11 @@ body {
       .logo a {
         font-weight: 800;
         text-decoration: none;
-        color: $black;
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+        transition: all 1s;
+        // text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        color: $white;
       }
       .menu {
         button {
@@ -79,9 +99,12 @@ body {
           background: none;
           outline: none;
           cursor: pointer;
+          letter-spacing: 0.1rem;
+          transition: all 1s;
+          // text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
           text-transform: uppercase;
           font-weight: 800;
-          color: $black;
+          color: $white;
         }
       }
     }
@@ -110,7 +133,7 @@ body {
       }
       .menu-layer {
         position: relative;
-        background: $red;
+        background: $grass;
         height: 100%;
         overflow: hidden;
         .menu-city-background {

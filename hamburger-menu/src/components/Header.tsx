@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Hamburger from "./Hamburger";
 
 export type M = {
@@ -9,6 +9,24 @@ export type M = {
 };
 
 const Header = () => {
+  const pUrl = useLocation().pathname;
+  const logo = useRef<HTMLAnchorElement>(null);
+  const menuBtn = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (
+      pUrl === "/our-products" ||
+      pUrl === "/fashion-style" ||
+      pUrl === "/contact-us"
+    ) {
+      logo.current!.style.color = "#000";
+      menuBtn.current!.style.color = "#000";
+    } else if (pUrl === "/") {
+      logo.current!.style.color = "#fff";
+      menuBtn.current!.style.color = "#fff";
+    }
+  }, [pUrl, logo, menuBtn]);
+
   const [state, setState] = useState<M>({
     initial: false,
     clicked: null,
@@ -29,19 +47,19 @@ const Header = () => {
         clicked: true,
         menuName: "Close",
       });
-      console.log(1);
+      // console.log(1);
     } else if (state.clicked === true) {
       setState({
         clicked: !state.clicked,
         menuName: "Menu",
       });
-      console.log(2);
+      // console.log(2);
     } else if (state.clicked === false) {
       setState({
         clicked: !state.clicked,
         menuName: "Close",
       });
-      console.log(3);
+      // console.log(3);
     }
   };
 
@@ -58,12 +76,12 @@ const Header = () => {
         <div className="wrapper">
           <div className="inner-header">
             <div className="logo">
-              <Link to="/" onClick={pathChangeHandler}>
-                HAMBRG.
+              <Link ref={logo} to="/" onClick={pathChangeHandler}>
+                easywear hijab
               </Link>
             </div>
             <div className="menu">
-              <button disabled={disabled} onClick={handleMenu}>
+              <button ref={menuBtn} disabled={disabled} onClick={handleMenu}>
                 Menu
               </button>
             </div>
