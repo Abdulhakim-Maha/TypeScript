@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
+import FashionStyle from "./pages/fasion-style/FashionStyle";
 import OurProducts from "./pages/our-products/OurProducts";
 
 function App() {
@@ -25,13 +26,6 @@ function App() {
   );
 }
 
-// function OurProducts() {
-//   return <p>Discover our numerous opportunities</p>;
-// }
-
-function FashionStyle() {
-  return <p>Solutions that help you.</p>;
-}
 
 
 export default App;
