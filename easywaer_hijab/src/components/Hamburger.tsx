@@ -207,7 +207,7 @@ const Hamburger: React.FC<{ state: M; handler: () => void }> = ({
               </nav>
               <div ref={info} className="info">
                 <h3>Our Promise</h3>
-                <p>You will enjoy and Be uniquely you</p>
+                <p>You will enjoy and be uniquely you</p>
                 <p>stand out and shine with our scarves</p>
               </div>
               <div className="location">
