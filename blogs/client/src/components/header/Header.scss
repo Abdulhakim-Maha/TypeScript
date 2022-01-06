@@ -1,0 +1,38 @@
+.header {
+  margin-top: 60px;
+
+  .headerTitles {
+    // position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 600;
+    color: #444;
+    font-family: "Lora", serif;
+    font-style: italic;
+
+    .headerTitleSm {
+      position: absolute;
+      font-weight: 300;
+      font-style: italic;
+      font-family: inherit;
+      top: 14%;
+      font-size: 20px;
+    }
+    .headerTitleLg {
+      position: absolute;
+      font-weight: 300;
+      font-family: inherit;
+      font-style: italic;
+      top: 16%;
+      font-size: 100px;
+    }
+  }
+
+  .headerImg {
+    width: 100%;
+    height: 450px;
+    margin-top: 80px;
+    object-fit: cover;
+  }
+}
