@@ -8,9 +8,9 @@ const Home = () => {
     <>
       <Header />
       <div className="home">
-		  <Posts/>
-		  <Sidebar/>
-	  </div>
+        <Posts />
+        <Sidebar />
+      </div>
     </>
   );
 };

@@ -1,10 +1,16 @@
 import React from 'react'
+import Post from '../post/Post'
 import './Posts.scss'
 
 const Posts = () => {
 	return (
 		<div className='posts'>
-			Posts
+			<Post/>
+			<Post/>
+			<Post/>
+			<Post/>
+			<Post/>
+			<Post/>
 		</div>
 	)
 }
