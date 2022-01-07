@@ -6,7 +6,7 @@
   top: 0;
   display: flex;
   align-items: center;
-  font-family: "Cormorant Garamond", serif;
+  // font-family: "Cormorant Garamond", serif;
   font-weight: 300;
   font-size: 24px;
   z-index: 2;
@@ -36,16 +36,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: "Cormorant Garamond", serif;
       list-style-type: none;
+      font-size: 18px;
       margin: 0;
       padding: 0;
 
       .topListItem {
         margin-right: 15px;
-        font-size: 18px;
-        font-family: "Cormorant Garamond", serif;
+        font-size: inherit;
+        font-family: inherit;
         text-transform: uppercase;
-        font-weight: 0;
         cursor: pointer;
       }
     }
@@ -65,5 +66,24 @@
       cursor: pointer;
       margin-left: 15px;
     }
+  }
+}
+
+.topList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  font-size: 18px;
+  font-family: "Cormorant Garamond", serif;
+  margin: 0;
+  padding: 0;
+
+  .topListItem {
+    margin-right: 15px;
+    font-size: inherit;
+    font-family: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
   }
 }
