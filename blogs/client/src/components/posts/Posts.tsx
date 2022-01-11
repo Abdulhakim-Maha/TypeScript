@@ -1,18 +1,16 @@
-import React from 'react'
-import Post from '../post/Post'
-import './Posts.scss'
+import React from "react";
+import Post from "../post/Post";
+import "./Posts.scss";
+import { POST } from "../../interface/post";
 
-const Posts = () => {
-	return (
-		<div className='posts'>
-			<Post/>
-			<Post/>
-			<Post/>
-			<Post/>
-			<Post/>
-			<Post/>
-		</div>
-	)
-}
+const Posts: React.FC<{ posts: POST[] }> = ({ posts }) => {
+  return (
+    <div className="posts">
+      {posts.map((post) => {
+        return <Post post={post} key={post._id} />;
+      })}
+    </div>
+  );
+};
 
-export default Posts
+export default Posts;

@@ -1,27 +1,26 @@
 import React from "react";
 import "./Post.scss";
+import { POST } from "../../interface/post";
+import { Link } from "react-router-dom";
 
-const Post = () => {
+const Post: React.FC<{ post: POST }> = ({ post }) => {
   return (
     <div className="post">
-      <img
-        src="https://images.pexels.com/photos/10446669/pexels-photo-10446669.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-        alt=""
-        className="postImg"
-      />
+      <img src={post.photo} alt="" className="postImg" />
       <div className="postInfo">
         <div className="postCategories">
-          <span className="postCate">Music</span>
-          <span className="postCate">Life</span>
+          {post.categories.map((c) => {
+            return <span className="postCate">{c.name}</span>;
+          })}
         </div>
-        <span className="postTitle">Lorem, ipsum dolor sit amet</span>
-        <span className="postDate">1 hour ago</span>
+        <Link className="link" to={`/post/${post._id}`}>
+          <span className="postTitle">{post.title}</span>
+        </Link>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-        exercitationem nisi repellat delectus at dolorem enim mollitia, iure
-        eveniet atque?
-      </p>
+      <p className="postDesc">{post.desc}</p>
     </div>
   );
 };

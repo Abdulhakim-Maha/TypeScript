@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SinglePost.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
+import { POST } from "../../interface/post";
 
 const SinglePost = () => {
+  const [post, setPost] = useState<POST | null>(null);
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("/post/" + path);
+      setPost(res.data);
+      // console.log(res.data);
+    };
+    try {
+      getPost();
+    } catch (err) {
+      console.log(err);
+    }
+  }, [path]);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          src="https://images.pexels.com/photos/10446669/pexels-photo-10446669.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-          alt=""
-          className="singlePostImg"
-        />
+        <img src={post?.photo} alt="" className="singlePostImg" />
       </div>
       <h1 className="singlePostTitle">
-        Lorem ipsum dolor sit amet.
+        {post?.title}
         <div className="singlePostEdit">
           <FontAwesomeIcon className="singlePostIcon" icon={faEdit} />
           <FontAwesomeIcon className="singlePostIcon" icon={faTrashAlt} />
@@ -22,19 +38,14 @@ const SinglePost = () => {
       </h1>
       <div className="singlePostInfo">
         <span className="singlePostAuthor">
-          Author: <b>austiniqer</b>
+          Author:
+          <Link className="link" to={`/?user=${post?.username}`}>
+            <b>{post?.username}</b>
+          </Link>
         </span>
-        <span className="singlePostDate">1 hour ago</span>
+        <span className="singlePostDate">{post?.createdAt}</span>
       </div>
-      <p className="singlePostDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aliquid
-        molestias provident nihil, optio laboriosam dolor aspernatur tempore
-        deserunt aperiam explicabo tempora nisi consectetur deleniti itaque sed
-        et reiciendis harum. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Error aliquid molestias provident nihil, optio laboriosam dolor
-        aspernatur tempore deserunt aperiam explicabo tempora nisi consectetur
-        deleniti itaque sed et reiciendis harum.
-      </p>
+      <p className="singlePostDesc">{post?.desc}</p>
     </div>
   );
 };
