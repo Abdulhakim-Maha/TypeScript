@@ -8,9 +8,11 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import {authContext} from '../../context/context'
+import { useContext } from "react";
 
 const Topbar = () => {
-  const user = false;
+  const {user, logout} = useContext(authContext);
   return (
     <div className="top">
       <div className="topLeft">
@@ -37,11 +39,11 @@ const Topbar = () => {
             </Link>
           </li>
           <li className="topListItem">
-            <Link to="/" className="link">
+            <Link to="/write" className="link">
               write
             </Link>
           </li>
-          <li className="topListItem">{user && "Logout"}</li>
+          <li className="topListItem" onClick={logout}>{user && "Logout"}</li>
         </ul>
       </div>
       <div className="topRight">

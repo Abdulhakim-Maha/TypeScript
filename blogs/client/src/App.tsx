@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import Topbar from "./components/topbar/Topbar";
 import Home from "./pages/Home/Home";
@@ -8,9 +8,11 @@ import Settings from "./pages/settings/Settings";
 import Single from "./pages/single/Single";
 import Write from "./pages/write/Write";
 import { Routes, Route } from "react-router-dom";
+import {authContext} from './context/context'
+
 
 function App() {
-  const user = false;
+  const {user} = useContext(authContext)
   return (
     <React.Fragment>
       <Topbar />

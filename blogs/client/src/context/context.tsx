@@ -1,4 +1,5 @@
-import React, { useReducer } from "react";
+import axios from "axios";
+import React, { useEffect, useReducer } from "react";
 
 interface STATE {
   user: null | object;
@@ -6,21 +7,35 @@ interface STATE {
   error: boolean;
 }
 
-interface T {
-  user: null | object;
-  isFetching: boolean;
-  error: boolean;
-}
-
-type ACTION = { type: string; payload: Object };
-
-const defaultStore = {
-  user: null,
+const defaultState = {
+  user: JSON.parse(localStorage.getItem("user") as string) || null,
   isFetching: false,
   error: false,
 };
 
-const authContext = React.createContext<T>(defaultStore);
+type ACTION =
+  | { type: "LOGIN_START" }
+  | { type: "LOGIN_SUCCESS"; payload: Object }
+  | { type: "LOGIN_FAILURE" }
+  | { type: "LOGOUT" };
+
+interface STORE {
+  user: null | object;
+  isFetching: boolean;
+  error: boolean;
+  loggin: (username: string, password: string) => void;
+  logout: () => void;
+}
+
+const defaultStore: STORE = {
+  user: null,
+  isFetching: false,
+  error: false,
+  loggin: () => {},
+  logout: () => {},
+};
+
+export const authContext = React.createContext(defaultStore);
 
 const Reducer = (state: STATE, action: ACTION): STATE => {
   switch (action.type) {
@@ -42,26 +57,53 @@ const Reducer = (state: STATE, action: ACTION): STATE => {
         isFetching: false,
         error: true,
       };
+    case "LOGOUT":
+      return {
+        ...state,
+        user: null,
+      };
     default:
       return state;
   }
 };
 
-const authContextProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(Reducer, defaultStore);
+export const AuthContextProvider: React.FC = ({ children }) => {
+  const [state, dispatch] = useReducer(Reducer, defaultState);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user));
+  }, [state.user]);
+
+  // console.log(state.user)
+
+  const logginHandler = async (username: string, password: string) => {
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("/auth/login", {
+        username,
+        password,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE" });
+    }
+  };
+
+  const logoutHandler = () => {
+    dispatch({ type: "LOGOUT" });
+  };
 
   return (
     <authContext.Provider
       value={{
-        user: state.user,
-        isFetching: state.isFetching,
         error: state.error,
-        dispatch,
+        isFetching: state.isFetching,
+        user: state.user,
+        loggin: logginHandler,
+        logout: logoutHandler,
       }}
     >
       {children}
     </authContext.Provider>
   );
 };
-
-export default authContextProvider;
