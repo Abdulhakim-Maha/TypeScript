@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useReducer } from "react";
+import {USER} from '../interface/user'
 
 interface STATE {
-  user: null | object;
+  user: null | USER;
   isFetching: boolean;
   error: boolean;
 }
@@ -15,16 +16,18 @@ const defaultState = {
 
 type ACTION =
   | { type: "LOGIN_START" }
-  | { type: "LOGIN_SUCCESS"; payload: Object }
+  | { type: "LOGIN_SUCCESS"; payload: USER }
   | { type: "LOGIN_FAILURE" }
   | { type: "LOGOUT" };
 
 interface STORE {
-  user: null | object;
+  user: null | USER;
   isFetching: boolean;
   error: boolean;
   loggin: (username: string, password: string) => void;
   logout: () => void;
+  dispatch: React.Dispatch<ACTION>;
+
 }
 
 const defaultStore: STORE = {
@@ -33,6 +36,7 @@ const defaultStore: STORE = {
   error: false,
   loggin: () => {},
   logout: () => {},
+  dispatch: () => {},
 };
 
 export const authContext = React.createContext(defaultStore);
@@ -101,6 +105,7 @@ export const AuthContextProvider: React.FC = ({ children }) => {
         user: state.user,
         loggin: logginHandler,
         logout: logoutHandler,
+        dispatch: dispatch,
       }}
     >
       {children}

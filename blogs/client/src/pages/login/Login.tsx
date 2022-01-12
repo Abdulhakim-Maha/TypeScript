@@ -2,17 +2,29 @@ import { Link } from "react-router-dom";
 import "./Login.scss";
 import React, { useContext, useRef } from "react";
 import { authContext } from "../../context/context";
+import axios from "axios";
 
 const Login = () => {
-  const { loggin ,isFetching} = useContext(authContext);
+  const { loggin, isFetching } = useContext(authContext);
   const username = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
 
-  const submitHandler = (e: React.FormEvent) => {
+  const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     loggin(username.current!.value, password.current!.value);
     username.current!.value = "";
     password.current!.value = "";
+
+    // dispatch({ type: "LOGIN_START" });
+    // try {
+    //   const res = await axios.post("/auth/login", {
+    //     username: username.current!.value,
+    //     password: password.current!.value,
+    //   });
+    //   dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    // } catch (err) {
+    //   dispatch({ type: "LOGIN_FAILURE" });
+    // }
   };
 
   return (
