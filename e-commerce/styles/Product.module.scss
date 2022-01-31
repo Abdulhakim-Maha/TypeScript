@@ -7,6 +7,7 @@
   .left {
     flex: 1;
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,6 +97,48 @@
           font-size: 12px;
           padding: 0 5px;
           border-radius: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    height: auto;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 20px;
+    .left {
+      .imgContainer {
+        width: 70vw;
+        height: 70vw;
+      }
+    }
+    .right {
+      .title {
+        margin: 5px;
+      }
+      .sizes {
+        width: 100%;
+        padding: 0 20px;
+      }
+      .ingredients {
+        flex-direction: column;
+        .option {
+          margin: 10px;
+          font-size: 18px;
+          .checkbox {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+      .add {
+        .quantity,
+        .button {
+          height: 50px;
+          padding: 10px 20px;
         }
       }
     }

@@ -44,9 +44,9 @@ export default () => {
               type="checkbox"
               id="double"
               name="double"
-              className={style.chexbox}
+              className={style.checkbox}
             />
-            <label htmlFor="double"> Double Ingredients</label>
+            <label htmlFor="double">Double Ingredients</label>
           </div>
           <div className={style.option}>
             <input
