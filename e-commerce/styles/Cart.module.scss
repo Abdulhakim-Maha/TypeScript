@@ -1,0 +1,70 @@
+@import "./var.scss";
+
+.container {
+  padding: 50px;
+  display: flex;
+
+  .left {
+    flex: 2;
+
+    .table {
+      width: 100%;
+      border-spacing: 20px;
+
+      .trTitle {
+      }
+      .tr {
+        td {
+          .imgContainer {
+            width: 100px;
+            height: 100px;
+            position: relative;
+          }
+          .name {
+            font-weight: 500;
+            color: $main-color;
+            font-size: 18px;
+          }
+          .extras {
+          }
+          .price {
+          }
+          .quantity {
+          }
+          .total {
+            font-weight: 500;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+  .right {
+    flex: 1;
+    .wrapper {
+      width: 90%;
+      min-height: 300px;
+      background-color: #333;
+      padding: 50px;
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+      .title {
+      }
+      .totalText {
+        .totalTextTitle {
+          margin-right: 10px;
+        }
+      }
+      .button {
+        height: 30px;
+        color: $main-color;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+    }
+  }
+}
