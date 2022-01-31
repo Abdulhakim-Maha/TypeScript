@@ -1,11 +1,11 @@
 import style from "../styles/PizzaList.module.scss";
 import React from "react";
-import PizzaCart from "./PIzzaCart";
+import PizzaCart from "./PizzaCart";
 
 const PizzaList = () => {
   return (
     <div className={style.container}>
-      <h1 className={style.titl}>the best pizza in town</h1>
+      <h1 className={style.title}>the best pizza in town</h1>
       <p className={style.desc}>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente
         voluptatem quaerat non sunt qui, similique eligendi hic ipsam,

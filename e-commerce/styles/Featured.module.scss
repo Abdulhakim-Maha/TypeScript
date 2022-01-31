@@ -9,8 +9,8 @@
 
   .arrowContainer {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 10%;
+    height: 20%;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -29,4 +29,11 @@
       position: relative;
     }
   }
+}
+
+@media  screen and (max-width:480px) {
+  .container{
+    height: 50vh;
+  }
+  
 }
