@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/Featuredtsx"  ],
+, "components/Featuredtsx", "util/dbConnet.js"  ],
   "exclude": [
     "node_modules"
   ]
