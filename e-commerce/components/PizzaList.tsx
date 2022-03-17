@@ -4,7 +4,7 @@ import PizzaCart from "./PizzaCart";
 import PIZZA from '../util/Pizza'
 
 const PizzaList: React.FC<{ pizzaList: Array<PIZZA> }> = ({ pizzaList }) => {
-  console.log(pizzaList);
+  // console.log(pizzaList);
   return (
     <div className={style.container}>
       <h1 className={style.title}>the best pizza in town</h1>

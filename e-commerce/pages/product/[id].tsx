@@ -1,4 +1,6 @@
 import Image from "next/image";
+import axios from "axios";
+import { GetServerSideProps } from "next";
 import React, { useState } from "react";
 import style from "../../styles/Product.module.scss";
 
@@ -76,11 +78,21 @@ export default () => {
             <label htmlFor="garlic">Garlic Sauce</label>
           </div>
         </div>
-		 <div className={style.add}>
-            <input type="number" defaultValue={1} className={style.quantity}/>
-            <button className={style.button}>Add to Cart</button>
+        <div className={style.add}>
+          <input type="number" defaultValue={1} className={style.quantity} />
+          <button className={style.button}>Add to Cart</button>
         </div>
       </div>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({params}) => {
+  console.log(params);
+  const res = await axios.get(`http://localhost:3000/api/products/${params.id}`);
+  return {
+    props: {
+      pizza: res.data,
+    },
+  };
 };
