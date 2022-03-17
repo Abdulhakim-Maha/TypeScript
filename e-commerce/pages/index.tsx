@@ -1,10 +1,14 @@
 import Head from "next/head";
+import { GetServerSideProps } from "next";
 import Image from "next/image";
 import Featured from "../components/Featured";
 import PizzaList from "../components/PizzaList";
 import styles from "../styles/Home.module.scss";
+import axios from "axios";
+import PIZZA from "../util/Pizza";
 
-export default function Home() {
+const Home: React.FC<{ pizzaList: PIZZA[] }> = (props) => {
+  // console.log(props);
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +17,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Featured />
-      <PizzaList />
+      <PizzaList pizzaList={props.pizzaList} />
     </div>
   );
-}
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await axios.get("http://localhost:3000/api/products");
+  return {
+    props: {
+      pizzaList: res.data,
+    },
+  };
+};
+
+export default Home;

@@ -1,8 +1,10 @@
 import style from "../styles/PizzaList.module.scss";
 import React from "react";
 import PizzaCart from "./PizzaCart";
+import PIZZA from '../util/Pizza'
 
-const PizzaList = () => {
+const PizzaList: React.FC<{ pizzaList: Array<PIZZA> }> = ({ pizzaList }) => {
+  console.log(pizzaList);
   return (
     <div className={style.container}>
       <h1 className={style.title}>the best pizza in town</h1>
@@ -12,16 +14,11 @@ const PizzaList = () => {
         doloremque deleniti rem impedit. laudantium placeat laboriosam
         necessitatibus saepe harum et possimus? Delectus.
       </p>
-	  <div className={style.wrapper}>
-		  <PizzaCart/>    
-		  <PizzaCart/>    
-		  <PizzaCart/>    
-		  <PizzaCart/>    
-		  <PizzaCart/>    
-		  <PizzaCart/>    
-		  <PizzaCart/>    
-		  <PizzaCart/>    
-	  </div>
+      <div className={style.wrapper}>
+        {pizzaList.map((pizza) => {
+          return <PizzaCart key={pizza._id} pizza={pizza} />;
+        })}
+      </div>
     </div>
   );
 };
