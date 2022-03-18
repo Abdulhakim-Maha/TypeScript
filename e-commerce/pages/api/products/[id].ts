@@ -7,13 +7,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   dbConnect();
   const {
     method,
-    query,
+    query : {id},
   } = req;
-  console.log(query)
+  // console.log(id + 'yeah we got it')
 
   if (method == "GET") {
     try {
-      const product = await Product.findById(query.id);
+      const product = await Product.findById(id);
+      // console.log(product)
       res.status(200).json(product);
     } catch (err) {
       res.status(500).json(err);

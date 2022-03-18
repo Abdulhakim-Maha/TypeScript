@@ -5,7 +5,11 @@ export default interface Pizza {
   __v: number;
   desc: string;
   createdAt: string;
-  extraOptions: {}[];
+  extraOptions: {
+    _id: number;
+    text: string;
+    price: number;
+  }[];
   img: string;
   updatedAt: string;
 }
