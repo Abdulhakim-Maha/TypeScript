@@ -34,6 +34,7 @@ async function dbConnect() {
     })
   }
   cached.conn = await cached.promise
+  console.log('db connected!')
   return cached.conn
 }
 

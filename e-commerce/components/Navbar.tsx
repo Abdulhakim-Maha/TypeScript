@@ -1,8 +1,10 @@
 import Image from "next/image";
 import React from "react";
+import { useAppSelector } from "../redux/hook";
 import style from "../styles/Navbar.module.scss";
 
 const Navbar = () => {
+  const quantity = useAppSelector(state => state.cart.quntiity);
   return (
     <div className={style.container}>
       <div className={style.item}>
@@ -28,7 +30,7 @@ const Navbar = () => {
       <div className={style.item}>
         <div className={style.cart}>
           <Image src={"/img/cart.png"} alt="" width={"30"} height={"30"} />
-          <div className={style.counter}>2</div>
+          <div className={style.counter}>{quantity}</div>
         </div>
       </div>
     </div>
