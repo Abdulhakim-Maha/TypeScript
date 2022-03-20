@@ -5,8 +5,10 @@ import React, { ChangeEvent, FormEvent, SetStateAction, useState } from "react";
 import style from "../../styles/Product.module.scss";
 import { ParsedUrlQuery } from "querystring";
 import PIZZA from "../../util/Pizza";
+import { useAppDispatch } from "../../redux/hook";
+import { addProduct ,reset} from "../../redux/cartSlice";
 
-interface extraOptions {
+export interface extraOptions {
   _id: number;
   text: string;
   price: number;
@@ -18,6 +20,7 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
   const [price, setPrice] = useState<number>(pizza.prices[0]);
   const [quantity, setQuantity] = useState<number>(1);
   const [extras, setExtras] = useState<extraOptions[]>([]);
+  const dispatch = useAppDispatch();
 
   const changePrice = (num: number) => {
     setPrice(price + num);
@@ -41,6 +44,10 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
       changePrice(-option.price);
       setExtras(extras.filter((ex) => ex._id !== option._id));
     }
+  };
+
+  const handleClick = () => {
+    dispatch(addProduct({...pizza,extras,price,quantity}));
   };
 
   return (
@@ -87,8 +94,15 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
           })}
         </div>
         <div className={style.add}>
-          <input onChange={(e) => setQuantity(+e.target.value)} type="number" defaultValue={1} className={style.quantity} />
-          <button className={style.button}>Add to Cart</button>
+          <input
+            onChange={(e) => setQuantity(+e.target.value)}
+            type="number"
+            defaultValue={1}
+            className={style.quantity}
+          />
+          <button className={style.button} onClick={handleClick}>
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

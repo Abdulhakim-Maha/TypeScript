@@ -1,7 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { extraOptions } from "../pages/product/[id]";
+import PIZZA from '../util/Pizza'
 
 interface CartState {
-  products: {}[];
+  products: {
+    _id:number;
+  }[];
   quntiity: number;
   total: number;
 }
@@ -18,10 +22,15 @@ const cartSlice = createSlice({
   reducers: {
     addProduct: (
       state,
-      action: PayloadAction<{ price: number; quantity: number }>
+      action: PayloadAction<{
+        price: number;
+        quantity: number;
+        _id:number;
+        extras: extraOptions[];
+      }>
     ) => {
       state.products.push(action.payload);
-	  state.quntiity += 1;
+      state.quntiity += 1;
       state.total += action.payload.price * action.payload.quantity;
     },
     reset: (state) => {

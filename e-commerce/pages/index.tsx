@@ -24,6 +24,7 @@ const Home: React.FC<{ pizzaList: PIZZA[] }> = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await axios.get("http://localhost:3000/api/products");
+  // console.log(res.data);
   return {
     props: {
       pizzaList: res.data,
