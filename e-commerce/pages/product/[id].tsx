@@ -47,6 +47,7 @@ const ID: React.FC<{ pizza: PIZZA }> = ({ pizza }) => {
   };
 
   const handleClick = () => {
+    // console.log({...pizza,extras,price,quantity});
     dispatch(addProduct({...pizza,extras,price,quantity}));
   };
 
