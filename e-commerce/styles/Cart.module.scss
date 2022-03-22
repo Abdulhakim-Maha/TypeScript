@@ -69,12 +69,27 @@
   }
 }
 
+.paymentMethods {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payButton {
+  padding: 10px 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  background-color: white;
+  color: teal;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 480px) {
   .container {
     flex-direction: column;
     padding: 20px;
     .right {
-      .wrapper{
+      .wrapper {
         width: 100%;
       }
     }
@@ -97,16 +112,16 @@
             .quantity {
               font-size: 22px;
             }
-            .price::before{
-              content: 'Price: ';
+            .price::before {
+              content: "Price: ";
               font-weight: 500;
             }
-            .quantity::before{
-              content: 'Quantity: ';
+            .quantity::before {
+              content: "Quantity: ";
               font-weight: 500;
             }
-            .total::before{
-              content: 'Total: ';
+            .total::before {
+              content: "Total: ";
               font-weight: 500;
             }
             .imgContainer {
