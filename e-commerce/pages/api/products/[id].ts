@@ -4,7 +4,7 @@ import dbConnect from "../../../util/dbConnet";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // connect to mongodb
-  dbConnect();
+  await dbConnect();
   const {
     method,
     query : {id},

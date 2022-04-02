@@ -46,11 +46,13 @@ $main-color: #d1411e;
       color: white;
 
       .listItem {
+        cursor: pointer;
         margin: 20px;
         font-weight: 500;
       }
     }
     .cart {
+      cursor: pointer;
       position: relative;
       .counter {
         position: absolute;

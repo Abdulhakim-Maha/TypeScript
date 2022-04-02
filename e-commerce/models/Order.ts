@@ -1,19 +1,19 @@
 import { Schema, model, models } from "mongoose";
 
-export enum METHOD {
-  PAYPAL,
-  CASH,
-}
+// export enum METHOD {
+//   PAYPAL,
+//   CASH,
+// }
 
-export interface PRODUCT {
+export interface ORDER {
   customer: string;
   address: string;
   total: number;
   status: number;
-  method: METHOD;
+  method: number;
 }
 
-const OrderSchema = new Schema<PRODUCT>(
+const OrderSchema = new Schema<ORDER>(
   {
     customer: {
       type: String,
@@ -34,7 +34,7 @@ const OrderSchema = new Schema<PRODUCT>(
       default: 0,
     },
     method: {
-      enum: METHOD,
+      type: Number,
       required: true,
     },
   },
