@@ -34,8 +34,8 @@ const Index: React.FC<{ products: PRODUST[]; orders: ORDER_V2[] }> = ({
       });
       setOrderList([
         res.data,
-        ...orderList.filter(order=>order._id !== id)
-      ])
+        ...orderList.filter((order) => order._id !== id),
+      ]);
     } catch (error) {
       console.log(error);
     }
@@ -125,6 +125,16 @@ const Index: React.FC<{ products: PRODUST[]; orders: ORDER_V2[] }> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const myCookie = context.req.cookies || "";
+  if (myCookie.token !== process.env.TOKEN) {
+    return {
+      redirect: {
+        destination: "/admin/login",
+        permanent: false,
+      },
+    };
+  }
+  
   const productRes = await axios.get("http://localhost:3000/api/products");
   const orderRes = await axios.get("http://localhost:3000/api/orders");
 

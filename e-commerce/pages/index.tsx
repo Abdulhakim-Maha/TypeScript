@@ -6,8 +6,12 @@ import PizzaList from "../components/PizzaList";
 import styles from "../styles/Home.module.scss";
 import axios from "axios";
 import PIZZA from "../util/Pizza";
+import { useState } from "react";
+import Add from "../components/Add";
+import AddButton from "../components/AddButton";
 
-const Home: React.FC<{ pizzaList: PIZZA[] }> = (props) => {
+const Home: React.FC<{ pizzaList: PIZZA[]; admin: boolean }> = (props) => {
+  const [close, setClose] = useState<boolean>(true);
   // console.log(props);
   return (
     <div className={styles.container}>
@@ -17,17 +21,26 @@ const Home: React.FC<{ pizzaList: PIZZA[] }> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Featured />
+      {props.admin && <AddButton setClose={setClose}/>}
       <PizzaList pizzaList={props.pizzaList} />
+      {!close && <Add setClose={setClose}/>}
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const myCookie = context.req.cookies || "";
+  let admin: boolean = false;
+
+  if (myCookie.token === process.env.TOKEN) {
+    admin = true;
+  }
   const res = await axios.get("http://localhost:3000/api/products");
   // console.log(res.data);
   return {
     props: {
       pizzaList: res.data,
+      admin,
     },
   };
 };
