@@ -16,6 +16,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(500).json(err);
     }
   } else if (method === "PUT") {
+    const order = await Order.findByIdAndUpdate(id, req.body,{
+      new: true
+    })
+    res.status(200).json(order)
   } else if (method === "DELETE") {
   }
 };

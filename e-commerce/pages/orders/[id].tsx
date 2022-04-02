@@ -6,7 +6,7 @@ import { GetServerSideProps } from "next";
 import { ORDER } from "../../models/Order";
 import axios from "axios";
 
-interface ORDER_V2 extends ORDER {
+export interface ORDER_V2 extends ORDER {
   _id: number;
 }
 

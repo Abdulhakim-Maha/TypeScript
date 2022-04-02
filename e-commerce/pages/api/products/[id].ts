@@ -7,7 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   await dbConnect();
   const {
     method,
-    query : {id},
+    query: { id },
   } = req;
   // console.log(id + 'yeah we got it')
 
@@ -29,6 +29,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(201).json(product);
     } catch (err) {
       res.status(500).json("there is some error occurs!\n" + err);
+    }
+  } else if (method === "DELETE") {
+    try {
+      await Product.findByIdAndDelete(id);
+      res.status(200).json("product has been deleted");
+    } catch (error) {
+      res.status(500).json(error);
     }
   }
 };
